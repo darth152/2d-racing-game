@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Frontleftwheel.gd" type="Script" id=2]
+[ext_resource path="res://Frontrightwheel.gd" type="Script" id=3]
+[ext_resource path="res://frontrightwheel.png" type="Texture" id=4]
+[ext_resource path="res://frontleftwheel.png" type="Texture" id=5]
+[ext_resource path="res://backrightwheel.png" type="Texture" id=6]
+[ext_resource path="res://backleftwheel.png" type="Texture" id=7]
+[ext_resource path="res://cars/f1cyan.png" type="Texture" id=8]
+
+[node name="Player" type="Node2D"]
+
+[node name="F1Cyan" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+script = ExtResource( 1 )
+
+[node name="Frontleftwheel" type="Sprite" parent="F1Cyan"]
+position = Vector2( -24, -36 )
+texture = ExtResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Frontrightwheel" type="Sprite" parent="F1Cyan"]
+position = Vector2( 24, -36 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Backleftwheel" type="Sprite" parent="F1Cyan"]
+position = Vector2( -20, 50 )
+texture = ExtResource( 7 )
+
+[node name="Backrightwheel" type="Sprite" parent="F1Cyan"]
+position = Vector2( 20, 50 )
+texture = ExtResource( 6 )

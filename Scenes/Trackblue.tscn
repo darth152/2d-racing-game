@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Playerblue.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nos.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Obstaclespawn.gd" type="Script" id=4]
+[ext_resource path="res://track.png" type="Texture" id=6]
+
+[node name="Track" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ConeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 500, 300 )
+texture = ExtResource( 6 )
+
+[node name="Nos" type="Sprite" parent="."]
+position = Vector2( 35, 499 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 500, 352 )
+
+[connection signal="timeout" from="ConeTimer" to="." method="_on_Timer_timeout"]
