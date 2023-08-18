@@ -1,0 +1,184 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scenes/Obstacles.gd" type="Script" id=1]
+[ext_resource path="res://brakes.png" type="Texture" id=2]
+[ext_resource path="res://nos.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Playerpurple.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Score.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Brakeslabel.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Boostlabel.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Errors.gd" type="Script" id=9]
+[ext_resource path="res://track.png" type="Texture" id=10]
+[ext_resource path="res://connection_ii/ConnectionII.otf" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 11 )
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 1000, 427 )
+b = Vector2( 0, 427 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 11 )
+
+[node name="Track" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ConeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="TirestackTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="RollingtireTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="BrakespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="NosspawnTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 5 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 500, 300 )
+texture = ExtResource( 10 )
+
+[node name="usenosTimer" type="Timer" parent="ParallaxBackground"]
+wait_time = 3.0
+one_shot = true
+
+[node name="usebrakeTimer" type="Timer" parent="ParallaxBackground"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Nos" type="Sprite" parent="."]
+position = Vector2( 37, 497 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Boost" type="Label" parent="Nos"]
+margin_left = -9.0
+margin_top = -36.0
+margin_right = 9.0
+margin_bottom = -18.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_colors/font_color_shadow = Color( 0.286275, 0.286275, 0.286275, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+script = ExtResource( 8 )
+
+[node name="Brakes" type="Sprite" parent="."]
+position = Vector2( 910, 525 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="Brakes" type="Label" parent="Brakes"]
+margin_left = 36.6667
+margin_top = -21.3333
+margin_right = 51.6667
+margin_bottom = -1.33331
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.619608, 0.619608, 0.619608, 1 )
+custom_colors/font_color_shadow = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 7 )
+
+[node name="pointcounter" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointcounter"]
+shape = SubResource( 1 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 75.0
+margin_bottom = 75.0
+size_flags_stretch_ratio = 0.0
+custom_colors/font_color = Color( 0.32549, 0.00784314, 0.427451, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.0705882, 0.654902, 1 )
+custom_colors/font_color_shadow = Color( 0.654902, 0.137255, 0.890196, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="BrakeErrorLabel" type="Label" parent="Node2D"]
+margin_left = 830.0
+margin_top = 365.0
+margin_right = 983.0
+margin_bottom = 428.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
+custom_colors/font_color_shadow = Color( 0.4, 0.4, 0.4, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 7 )
+text = "No Brakes
+Available"
+
+[node name="BoostErrorLabel" type="Label" parent="Node2D"]
+margin_left = 5.0
+margin_top = 332.0
+margin_right = 158.0
+margin_bottom = 395.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.137255, 0.137255, 0.137255, 1 )
+custom_colors/font_color_shadow = Color( 0.337255, 0.337255, 0.337255, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 6 )
+text = "No Boosts
+Available"
+
+[node name="Playerpurple" parent="." instance=ExtResource( 4 )]
+position = Vector2( 500, 351 )
+
+[connection signal="timeout" from="ConeTimer" to="." method="_on_ConeTimer_timeout"]
+[connection signal="timeout" from="TirestackTimer" to="." method="_on_TirestackTimer_timeout"]
+[connection signal="timeout" from="RollingtireTimer" to="." method="_on_RollingtireTimer_timeout"]
+[connection signal="timeout" from="BrakespawnTimer" to="." method="_on_BrakespawnTimer_timeout"]
+[connection signal="timeout" from="NosspawnTimer" to="." method="_on_NosspawnTimer_timeout"]
+[connection signal="timeout" from="ParallaxBackground/usenosTimer" to="ParallaxBackground" method="_on_usenosTimer_timeout"]
+[connection signal="timeout" from="ParallaxBackground/usebrakeTimer" to="ParallaxBackground" method="_on_usebrakeTimer_timeout"]
+[connection signal="area_entered" from="pointcounter" to="Score" method="_on_pointcounter_area_entered"]

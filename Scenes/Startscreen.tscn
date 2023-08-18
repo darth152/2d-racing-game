@@ -1,0 +1,219 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Scenes/Scoreboard.gd" type="Script" id=1]
+[ext_resource path="res://Startscreen.gd" type="Script" id=2]
+[ext_resource path="res://f1buttons/f1cyanclicked.png" type="Texture" id=3]
+[ext_resource path="res://f1buttons/f1pinkhover.png" type="Texture" id=4]
+[ext_resource path="res://f1buttons/f1pinkbutton.png" type="Texture" id=5]
+[ext_resource path="res://f1buttons/f1cyanhover.png" type="Texture" id=6]
+[ext_resource path="res://f1buttons/f1redbutton.png" type="Texture" id=7]
+[ext_resource path="res://f1buttons/f1purplebutton.png" type="Texture" id=8]
+[ext_resource path="res://f1buttons/f1blueclicked.png" type="Texture" id=9]
+[ext_resource path="res://f1buttons/f1yellowbutton.png" type="Texture" id=10]
+[ext_resource path="res://f1buttons/f1orangeclicked.png" type="Texture" id=11]
+[ext_resource path="res://f1buttons/f1yellowclicked.png" type="Texture" id=12]
+[ext_resource path="res://f1buttons/f1bluehover.png" type="Texture" id=13]
+[ext_resource path="res://f1buttons/f1bluebutton.png" type="Texture" id=14]
+[ext_resource path="res://f1buttons/f1orangebutton.png" type="Texture" id=15]
+[ext_resource path="res://f1buttons/f1redhover.png" type="Texture" id=16]
+[ext_resource path="res://f1buttons/f1orangehover.png" type="Texture" id=17]
+[ext_resource path="res://track.png" type="Texture" id=18]
+[ext_resource path="res://f1buttons/f1yellowhover.png" type="Texture" id=19]
+[ext_resource path="res://f1buttons/f1purplehover.png" type="Texture" id=20]
+[ext_resource path="res://f1buttons/f1redclicked.png" type="Texture" id=21]
+[ext_resource path="res://f1buttons/f1greenclicked.png" type="Texture" id=22]
+[ext_resource path="res://f1buttons/f1purpleclicked.png" type="Texture" id=23]
+[ext_resource path="res://f1buttons/f1pinkclicked.png" type="Texture" id=24]
+[ext_resource path="res://connection_ii/ConnectionII.otf" type="DynamicFontData" id=25]
+[ext_resource path="res://f1buttons/f1cyanbutton.png" type="Texture" id=26]
+[ext_resource path="res://f1buttons/f1greenbutton.png" type="Texture" id=27]
+[ext_resource path="res://f1buttons/f1greenhover.png" type="Texture" id=28]
+[ext_resource path="res://logo.png" type="Texture" id=29]
+[ext_resource path="res://instructionshover.png" type="Texture" id=30]
+[ext_resource path="res://instructionspressed.png" type="Texture" id=31]
+[ext_resource path="res://instructionsbutton.png" type="Texture" id=32]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ParallaxBackground
+
+
+func _process(_delta):
+	scroll_offset. y += 1
+
+
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 25 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 500, 300 )
+texture = ExtResource( 18 )
+
+[node name="logo" type="TextureRect" parent="."]
+anchor_left = 0.075
+anchor_top = 0.025
+anchor_right = 0.491
+anchor_bottom = 0.192
+margin_right = -6.10352e-05
+margin_bottom = -0.200012
+texture = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Scoreboardbanner" type="Label" parent="."]
+anchor_left = 0.65
+anchor_top = 0.05
+anchor_right = 0.941
+anchor_bottom = 0.117
+margin_top = 0.199999
+margin_right = -6.10352e-05
+margin_bottom = 8.8
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.141176, 0.141176, 0.141176, 1 )
+custom_colors/font_color_shadow = Color( 0.262745, 0.262745, 0.262745, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 6 )
+text = "Scoreboard"
+
+[node name="Scoreboard" type="Label" parent="."]
+anchor_left = 0.65
+anchor_top = 0.15
+anchor_right = 0.941
+anchor_bottom = 0.26
+margin_bottom = 14.3333
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.137255, 0.137255, 0.137255, 1 )
+custom_colors/font_color_shadow = Color( 0.262745, 0.262745, 0.262745, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureButtonRed" type="TextureButton" parent="."]
+anchor_left = 0.094
+anchor_top = 0.292
+anchor_right = 0.159
+anchor_bottom = 0.55
+margin_top = -0.200012
+margin_right = -1.52588e-05
+margin_bottom = 0.000274658
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 16 )
+
+[node name="TextureButtonOrange" type="TextureButton" parent="."]
+anchor_left = 0.344
+anchor_top = 0.292
+anchor_right = 0.409
+anchor_bottom = 0.55
+margin_top = -0.200012
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 17 )
+
+[node name="TextureButtonYellow" type="TextureButton" parent="."]
+anchor_left = 0.591
+anchor_top = 0.292
+anchor_right = 0.656
+anchor_bottom = 0.55
+margin_top = -0.200012
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 19 )
+
+[node name="TextureButtonGreen" type="TextureButton" parent="."]
+anchor_left = 0.841
+anchor_top = 0.292
+anchor_right = 0.906
+anchor_bottom = 0.55
+margin_top = -0.200012
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 28 )
+
+[node name="TextureButtonCyan" type="TextureButton" parent="."]
+anchor_left = 0.094
+anchor_top = 0.583
+anchor_right = 0.159
+anchor_bottom = 0.842
+margin_top = 0.200012
+margin_right = -1.52588e-05
+margin_bottom = -0.200043
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+
+[node name="TextureButtonBlue" type="TextureButton" parent="."]
+anchor_left = 0.344
+anchor_top = 0.583
+anchor_right = 0.409
+anchor_bottom = 0.842
+margin_top = 0.200012
+margin_bottom = -0.200043
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 13 )
+
+[node name="TextureButtonPurple" type="TextureButton" parent="."]
+anchor_left = 0.591
+anchor_top = 0.583
+anchor_right = 0.656
+anchor_bottom = 0.842
+margin_top = 0.200012
+margin_bottom = -0.200043
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 20 )
+
+[node name="TextureButtonPink" type="TextureButton" parent="."]
+anchor_left = 0.841
+anchor_top = 0.583
+anchor_right = 0.906
+anchor_bottom = 0.842
+margin_top = 0.200012
+margin_bottom = -0.200043
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 4 )
+
+[node name="Instructions" type="TextureButton" parent="."]
+margin_left = 298.0
+margin_top = 510.0
+margin_right = 838.0
+margin_bottom = 610.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 31 )
+texture_hover = ExtResource( 30 )
+
+[connection signal="pressed" from="TextureButtonRed" to="." method="_on_TextureButtonRed_pressed"]
+[connection signal="pressed" from="TextureButtonOrange" to="." method="_on_TextureButtonOrange_pressed"]
+[connection signal="pressed" from="TextureButtonYellow" to="." method="_on_TextureButtonYellow_pressed"]
+[connection signal="pressed" from="TextureButtonGreen" to="." method="_on_TextureButtonGreen_pressed"]
+[connection signal="pressed" from="TextureButtonCyan" to="." method="_on_TextureButtonCyan_pressed"]
+[connection signal="pressed" from="TextureButtonBlue" to="." method="_on_TextureButtonBlue_pressed"]
+[connection signal="pressed" from="TextureButtonPurple" to="." method="_on_TextureButtonPurple_pressed"]
+[connection signal="pressed" from="TextureButtonPink" to="." method="_on_TextureButtonPink_pressed"]
+[connection signal="pressed" from="Instructions" to="." method="_on_Instructions_pressed"]

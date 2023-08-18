@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Instructions.gd" type="Script" id=1]
+[ext_resource path="res://track.png" type="Texture" id=2]
+[ext_resource path="res://connection_ii/ConnectionII.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://playbuttonhover.png" type="Texture" id=4]
+[ext_resource path="res://playbutton.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ParallaxBackground
+
+
+func _process(_delta):
+	scroll_offset. y += 1
+
+
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 500, 300 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 65.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 0.341176, 0.341176, 0.341176, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 2 )
+text = "Controls:
+- Your car will constantly idle Speeding up slightly every 10 points
+- W or Up Arrow Key to drive faster than an idling speed
+- A or Left Arrow Key to steer left
+- D or Right Arrow Key to steer right
+- Your boost counter is in the bottom left corner if the number is higher than 0 
+you can press the Space Bar to boost
+- Your brakes counter is in the bottom left corner if the number is higher than 0 
+you can press S, The Down Arrow Key, or Shift to slow down
+
+How To Play:
+As you drive there will be obstacles (tires and cones) on the track avoid hitting them or
+you will be sent back to the start screen.
+Every time you drive past an obstacle you will gain 1 point and the game speeds up 
+every 10 points
+There will also be pickups, any pickup that looks like a NOS canister will give you +1
+boosts and any pickup that looks like a brake pad will give you +1 brakes"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 400.0
+margin_top = 495.0
+margin_right = 600.0
+margin_bottom = 595.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
